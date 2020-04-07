@@ -31,7 +31,6 @@ public class TaskControllerTest {
 	 public void naoDeveSalvarTarefaSemDescricao() {
 		Task todo = new Task();
 		todo.setDueDate(LocalDate.now());
-		//todo.setTask("Descrição");
 		try {
 			controller.save(todo);
 			Assert.fail("Não deveria chegar neste ponto");
