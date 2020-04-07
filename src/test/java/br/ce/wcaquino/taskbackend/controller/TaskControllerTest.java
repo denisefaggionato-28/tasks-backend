@@ -33,7 +33,6 @@ public class TaskControllerTest {
 		todo.setDueDate(LocalDate.now());
 		try {
 			controller.save(todo);
-			Assert.fail("Não deveria chegar neste ponto");
 		} catch (ValidationException e) {
 			Assert.assertEquals("Fill the task description", e.getMessage());
 		}			 
@@ -53,7 +52,6 @@ public class TaskControllerTest {
 	
 	@Test
 	 public void naoDeveSalvarTarefaComDataPassada() {
-		
 		Task todo = new Task();
 		todo.setDueDate(LocalDate.of(2010, 01, 01));
 		todo.setTask("Descrição");
@@ -62,20 +60,15 @@ public class TaskControllerTest {
 			Assert.fail("Não deveria chegar neste ponto");
 		} catch (ValidationException e) {
 			Assert.assertEquals("Due date must not be in past", e.getMessage());
-		}	
-		 
+		}		 
 	 }
 	
 	@Test
 	 public void DeveSalvarTarefaComSucesso() throws ValidationException {
-		
 		Task todo = new Task();
 		todo.setDueDate(LocalDate.now());
 		todo.setTask("Descrição");
 		controller.save(todo);
-		Mockito.verify(taskRep).save(todo);
-			
-		 
+		Mockito.verify(taskRep).save(todo);			 
 	 }
-
 }
