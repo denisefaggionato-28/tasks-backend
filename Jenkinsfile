@@ -35,5 +35,12 @@ pipeline{
 
             }
         }
+        stage('API Test'){
+            steps {
+                git credentialsId: 'TomcatLogin', url: 'https://github.com/denisefaggionato-28/tasks-api-test'
+                bat 'mvn test'
+            }
+        }
+    
     }
 }
