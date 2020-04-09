@@ -52,6 +52,14 @@ pipeline{
                 }
             }
         }
+         stage('Functional Test'){
+            steps {
+                dir('Functional-test'){
+                git credentialsId: 'TomcatLogin', url: 'https://github.com/denisefaggionato-28/Test-Funcional'
+                bat 'mvn test'
+                }
+            }
+        }
     
     }
 }
