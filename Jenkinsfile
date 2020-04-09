@@ -37,8 +37,10 @@ pipeline{
         }
         stage('API Test'){
             steps {
+                dir('api-test'){
                 git credentialsId: 'TomcatLogin', url: 'https://github.com/denisefaggionato-28/tasks-api-test'
                 bat 'mvn test'
+                }
             }
         }
     
