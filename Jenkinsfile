@@ -84,8 +84,7 @@ pipeline{
         }
         fixed{
             emailext body: 'see the attached log below', compressLog: true, subject: 'Build is fine!!', to: 'denisejonata@gmail.com'
-        }
-    }  
+        }  
 
     }
 }
